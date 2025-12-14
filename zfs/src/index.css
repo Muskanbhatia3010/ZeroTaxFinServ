@@ -28,17 +28,3 @@
   );
 }
 
-
-
-/* Second deeper wave
-.hero-wave::after {
-  content: "";
-  position: absolute;
-  bottom: -120px;
-  left: -15%;
-  width: 130%;
-  height: 260px;
-  background: rgba(124, 144, 130, 0.45);
-  border-radius: 50% 50% 0 0;
-  animation: waveMove 55s ease-in-out infinite reverse;
-} */
