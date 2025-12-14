@@ -41,16 +41,18 @@ export default function Navbar() {
               </button>
 
               {servicesOpen && (
-                <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg py-2">
-                  {services.map((service) => (
-                    <Link
-                      key={service.path}
-                      to={service.path}
-                      className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#7C9082] transition-colors"
-                    >
-                      {service.name}
-                    </Link>
-                  ))}
+                <div className="absolute top-full left-0 pt-2 w-64">
+                  <div className="bg-white rounded-lg shadow-lg py-2">
+                    {services.map((service) => (
+                      <Link
+                        key={service.path}
+                        to={service.path}
+                        className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#7C9082] transition-colors"
+                      >
+                        {service.name}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
