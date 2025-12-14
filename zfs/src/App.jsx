@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// import Navbar from "./components/Navbar";
-// import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import Home from "./pages/Home";
 // import ServiceDetail from "./pages/ServiceDetail";
 // import Contact from "./pages/Contact";
@@ -14,7 +14,7 @@ export default function App() {
         className="min-h-screen flex flex-col"
         style={{ fontFamily: "Inter, sans-serif" }}
       >
-        {/* <Navbar /> */}
+        <Navbar />
         <main className="flex-1">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -24,7 +24,7 @@ export default function App() {
             <Route path="/resources" element={<Resources />} /> */}
           </Routes>
         </main>
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </Router>
   );
