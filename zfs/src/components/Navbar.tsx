@@ -1,10 +1,35 @@
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { ChevronDown, Menu, X } from 'lucide-react';
+import logoDark from '../assets/logo-dark.png';
 
 export default function Navbar() {
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showShadow, setShowShadow] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (location.pathname === '/') {
+        // On homepage, show shadow only after scrolling past hero section (600px)
+        setShowShadow(window.scrollY > 600);
+      } else {
+        // On other pages, always show shadow
+        setShowShadow(true);
+      }
+    };
+
+    // Check initial scroll position
+    handleScroll();
+
+    // Add scroll listener
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [location.pathname]);
 
   const services = [
     { name: 'Personal Tax', path: '/services/personal-tax' },
@@ -16,11 +41,11 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="bg-white shadow-sm sticky top-0 z-50">
+    <nav className={`bg-white sticky top-0 z-50 transition-shadow ${showShadow ? 'shadow-sm' : ''}`}>
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link to="/" className="text-2xl" style={{ color: '#042A2B' }}>
-            <span className="font-semibold">TaxPro</span> Services
+          <Link to="/" className="text-2xl flex items-center" style={{ color: '#042A2B' }}>
+            <img src={logoDark} alt="TaxPro Logo" className="h-10 w-auto mr-2 object-contain" />
           </Link>
 
           {/* Desktop Menu */}

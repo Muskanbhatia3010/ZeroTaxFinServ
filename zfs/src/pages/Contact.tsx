@@ -1,8 +1,14 @@
 import { useState } from "react";
 import { Mail, Phone, MapPin } from "lucide-react";
+import emailjs from "@emailjs/browser";
+
+
+
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
+    const [status, setStatus] = useState("idle");
+    // idle | loading | success | error
+    const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
@@ -10,19 +16,62 @@ export default function Contact() {
     message: "",
   });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert("Thank you for your message! We will get back to you soon.");
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      message: "",
+const handleSubmit = (e) => {
+  e.preventDefault();
+  setStatus("loading");
+
+  // DEV MODE: skip sending email
+  if (import.meta.env.VITE_ENABLE_EMAIL !== "true") {
+    console.log("DEV MODE — form data:", formData);
+
+    setTimeout(() => {
+      setStatus("success");
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
+    }, 800);
+
+    return;
+  }
+
+  // PROD MODE: send real email
+  emailjs
+    .send(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      {
+        first_name: formData.firstName,
+        last_name: formData.lastName,
+        email: formData.email,
+        phone: formData.phone,
+        message: formData.message,
+      },
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+    )
+    .then(() => {
+      setStatus("success");
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
+    })
+    .catch(() => {
+      setStatus("error");
     });
-  };
+};
+
+
+
 
   const handleChange = (e) => {
+    setStatus("idle");
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -135,11 +184,31 @@ export default function Contact() {
             </div>
 
             <button
-              type="submit"
-              className="w-full py-3 rounded-lg text-white bg-[#042A2B] hover:bg-[#7C9082] transition"
-            >
-              Submit
+                type="submit"
+                disabled={status === "loading"}
+                className={`w-full py-3 rounded-lg text-white transition
+                    ${
+                    status === "loading"
+                        ? "bg-gray-400 cursor-not-allowed"
+                        : "bg-[#042A2B] hover:bg-[#7C9082]"
+                    }
+                `}
+                >
+                {status === "loading" ? "Sending..." : "Submit"}
             </button>
+            {status === "success" && (
+                <div className="mt-4 rounded-lg bg-green-50 text-green-700 px-4 py-3 text-center">
+                    Thank you for reaching out. We’ve received your message and will get back to you shortly.
+                </div>
+                )}
+
+                {status === "error" && (
+                <div className="mt-4 rounded-lg bg-red-50 text-red-700 px-4 py-3 text-center">
+                    Something went wrong while sending your message. Please try again.
+                </div>
+                )}
+
+
           </form>
         </div>
       </section>

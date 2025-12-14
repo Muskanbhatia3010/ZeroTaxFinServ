@@ -88,42 +88,35 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative h-[600px] flex items-center justify-center">
-        <div className="absolute inset-0 overflow-hidden">
-          <ImageWithFallback
-            src="https://images.unsplash.com/photo-1762427354051-a9bdb181ae3b"
-            alt="Professional office"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-black/40" />
-        </div>
-
-        <div className="relative z-10 text-center text-white max-w-4xl px-6">
-          <h1 className="text-5xl md:text-6xl mb-6">
+      <section className="hero-wave h-[600px] flex items-center justify-center">
+        <div className="relative z-10 text-center max-w-4xl px-6">
+            <h1 className="text-5xl md:text-6xl mb-6 text-[#042A2B]">
             Simplifying Taxes. Empowering Growth.
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 text-gray-100">
-            Reliable tax and accounting solutions tailored to your needs.
-          </p>
+            </h1>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <p className="text-xl md:text-2xl mb-8 text-[#042A2B]/80">
+            Reliable tax and accounting solutions tailored to your needs.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
-              onClick={scrollToServices}
-              className="px-8 py-3 rounded-lg text-white hover:scale-105 transition"
-              style={{ backgroundColor: "#7C9082" }}
+                onClick={scrollToServices}
+                className="px-8 py-3 rounded-lg bg-[#7C9082] text-white hover:scale-105 transition"
             >
-              Know More
+                Know More
             </button>
 
             <Link
-              to="/contact"
-              className="px-8 py-3 rounded-lg bg-white text-gray-900 hover:scale-105 transition"
+                to="/contact"
+                className="px-8 py-3 rounded-lg bg-white text-[#042A2B] hover:scale-105 transition"
             >
-              Contact Us
+                Contact Us
             </Link>
-          </div>
+            </div>
         </div>
-      </section>
+        </section>
+
+
 
       {/* Stats */}
       <section className="py-20 bg-gray-50">
