@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Mail, Phone } from 'lucide-react';
+import logoDark from '../assets/logo-dark.png';
 
 export default function Footer() {
   return (
@@ -8,10 +9,15 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8">
           <div>
             <h3 className="text-xl mb-4" style={{ color: '#042A2B' }}>
-              <span className="font-semibold">TaxPro</span> Services
+              {/* <span className="font-semibold">TaxPro</span> Services */}
+              <img
+                src= {logoDark}
+                alt="ZeroTaxFinServ Logo"
+                className="h-10 mb-2"
+              />
             </h3>
             <p className="text-gray-600">
-              Reliable tax and accounting solutions tailored to your needs.
+              Modern accounting solutions designed to help Canadians grow with confidence.
             </p>
           </div>
 
@@ -56,18 +62,20 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center gap-2 text-gray-600">
                 <Mail className="w-4 h-4" style={{ color: '#7C9082' }} />
-                <span>info@taxpro.com</span>
+                <a href="mailto:info@zerotaxfinserv.ca">
+                  <span>info@zerotaxfinserv.ca</span>
+                </a>
               </div>
               <div className="flex items-center gap-2 text-gray-600">
                 <Phone className="w-4 h-4" style={{ color: '#7C9082' }} />
-                <span>(555) 123-4567</span>
+                <span>(236) 788-0925</span>
               </div>
             </div>
           </div>
         </div>
 
         <div className="border-t border-gray-200 mt-8 pt-8 text-center text-gray-600">
-          <p>&copy; 2024 TaxPro Services. All rights reserved.</p>
+          <p>&copy; 2025 Zero Tax Financial Services. All rights reserved.</p>
         </div>
       </div>
     </footer>

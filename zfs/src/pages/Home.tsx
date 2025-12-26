@@ -53,8 +53,8 @@ export default function Home() {
       path: "/services/corporate-tax",
     },
     {
-      title: "Bookkeeping & Virtual Accounting",
-      description: "Accurate bookkeeping and virtual accounting solutions.",
+      title: "Bookkeeping & Cloud Accounting",
+      description: "Accurate bookkeeping and cloud accounting solutions.",
       path: "/services/bookkeeping",
     },
     {
@@ -94,9 +94,10 @@ export default function Home() {
             Simplifying Taxes. Empowering Growth.
             </h1>
 
-            <p className="text-xl md:text-2xl mb-8 text-[#042A2B]/80">
-            Reliable tax and accounting solutions tailored to your needs.
+            <p className="text-xl md:text-1xl mb-8 text-[#042A2B]/80 max-w-4xl">
+              Modern accounting solutions designed to help Canadians grow with confidence.
             </p>
+
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
@@ -118,7 +119,7 @@ export default function Home() {
 
 
 
-      {/* Stats */}
+      {/* Stats
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((stat, i) => (
@@ -130,30 +131,9 @@ export default function Home() {
             </div>
           ))}
         </div>
-      </section>
+      </section> */}
 
-      {/* Testimonials */}
-      <section className="py-20">
-        <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-center mb-12 text-[#042A2B]">
-            What Our Clients Say
-          </h2>
 
-          <Slider {...sliderSettings}>
-            {testimonials.map((t, i) => (
-              <div key={i} className="px-4">
-                <div className="bg-white p-8 rounded-2xl shadow-sm">
-                  <p className="italic mb-6 text-gray-700">"{t.quote}"</p>
-                  <div className="border-t pt-6">
-                    <p className="text-[#042A2B]">{t.name}</p>
-                    <p className="text-sm text-gray-600">{t.role}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </Slider>
-        </div>
-      </section>
 
       {/* Services */}
       <section ref={servicesRef} className="py-20 bg-gray-50">
@@ -177,6 +157,29 @@ export default function Home() {
               </Link>
             ))}
           </div>
+        </div>
+      </section>
+
+            {/* Testimonials */}
+      <section className="py-20">
+        <div className="max-w-4xl mx-auto px-6">
+          <h2 className="text-center mb-12 text-[#042A2B]">
+            What Our Clients Say
+          </h2>
+
+          <Slider {...sliderSettings}>
+            {testimonials.map((t, i) => (
+              <div key={i} className="px-4">
+                <div className="bg-white p-8 rounded-2xl shadow-sm">
+                  <p className="italic mb-6 text-gray-700">"{t.quote}"</p>
+                  <div className="border-t pt-6">
+                    <p className="text-[#042A2B]">{t.name}</p>
+                    <p className="text-sm text-gray-600">{t.role}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </Slider>
         </div>
       </section>
     </div>

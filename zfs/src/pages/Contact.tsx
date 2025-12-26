@@ -99,7 +99,9 @@ const handleSubmit = (e) => {
                 <Mail className="w-6 h-6 text-[#7C9082]" />
               </div>
               <h3 className="mb-2 text-[#042A2B]">Email</h3>
-              <p className="text-gray-600">info@taxpro.com</p>
+              <p className="text-gray-600"><a href="mailto:info@zerotaxfinserv.ca">
+                  <span>info@zerotaxfinserv.ca</span>
+                </a></p>
             </div>
 
             <div className="flex flex-col items-center text-center p-6 bg-gray-50 rounded-2xl">
@@ -107,7 +109,7 @@ const handleSubmit = (e) => {
                 <Phone className="w-6 h-6 text-[#7C9082]" />
               </div>
               <h3 className="mb-2 text-[#042A2B]">Phone</h3>
-              <p className="text-gray-600">(555) 123-4567</p>
+              <p className="text-gray-600">(236) 788-09256</p>
             </div>
 
             <div className="flex flex-col items-center text-center p-6 bg-gray-50 rounded-2xl">
@@ -115,7 +117,7 @@ const handleSubmit = (e) => {
                 <MapPin className="w-6 h-6 text-[#7C9082]" />
               </div>
               <h3 className="mb-2 text-[#042A2B]">Address</h3>
-              <p className="text-gray-600">123 Main St, Suite 100</p>
+              <p className="text-gray-600">1288 West Georgia Street Vancouver, BC V6E 4R3</p>
             </div>
           </div>
 
